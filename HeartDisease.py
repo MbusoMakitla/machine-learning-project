@@ -19,10 +19,12 @@ featuresArray = np.array(features, dtype=int)
 # Calculate Entropy
 
 def entropy(target_col):
-    unique_classes, count_unique_classes = np.unique(target_col[:, -1], return_counts=True)
+    unique_classes, count_unique_classes = np.unique(target_col, return_counts=True)
     total = int(count_unique_classes[0]) + int(count_unique_classes[1])
     count_unique_class0 = int(count_unique_classes[0])
     count_unique_class1 = int(count_unique_classes[1])
     entropy = -(count_unique_class0/total*math.log(count_unique_class0/total, 2) + count_unique_class1/total*math.log(count_unique_class1/total, 2))
 
     return entropy
+
+print(entropy(targetArray))
