@@ -1,11 +1,10 @@
-import np as np
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import math
 
 # Stores the data as a dataframe
-df = pd.read_csv("heart.csv");
+df = pd.read_csv("heart.csv")
 # Split the data into test and training data
 X_train, X_test, y_train, y_test = train_test_split(df, df["target"], test_size=0.3, random_state=21)
 
@@ -13,7 +12,7 @@ X_train, X_test, y_train, y_test = train_test_split(df, df["target"], test_size=
 features = X_train.drop('target', 1)
 # convert from dataframe to array
 dataArray = np.array(X_train, dtype=int)
-targetArray = dataArray[:,-1]
+targetArray = dataArray[:, -1]
 featuresArray = np.array(features, dtype=int)
 
 
@@ -25,5 +24,9 @@ def entropy(target_col):
     count_unique_class0 = int(count_unique_classes[0])
     count_unique_class1 = int(count_unique_classes[1])
     entropy = -(count_unique_class0/total*math.log(count_unique_class0/total, 2) + count_unique_class1/total*math.log(count_unique_class1/total, 2))
+    print("The entropy is: ", entropy)
+    return
 
-    return entropy
+
+# We need to call entropy to verify if it is calculating the correct thing
+
