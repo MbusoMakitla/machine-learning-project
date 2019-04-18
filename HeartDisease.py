@@ -8,23 +8,26 @@ df = pd.read_csv("heart.csv")
 # Split the data into test and training data
 X_train, X_test, y_train, y_test = train_test_split(df, df["target"], test_size=0.3, random_state=21)
 
-# delete the target column
-features = X_train.drop('target', 1)
-# convert from dataframe to array
-dataArray = np.array(X_train, dtype=int)
-targetArray = dataArray[:, -1]
-featuresArray = np.array(features, dtype=int)
+dataNames = ["sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal"]
+entropy = dict()
 
+uV = np.unique(X_train["target"])
 
-# Calculate Entropy
+for name in dataNames:
+    data = X_train.groupby(name)['target'].value_counts() / X_train.groupby(name)['target'].count()
 
-def entropy(target_col):
-    unique_classes, count_unique_classes = np.unique(target_col, return_counts=True)
-    total = int(count_unique_classes[0]) + int(count_unique_classes[1])
-    count_unique_class0 = int(count_unique_classes[0])
-    count_unique_class1 = int(count_unique_classes[1])
-    entropy = -(count_unique_class0/total*math.log(count_unique_class0/total, 2) + count_unique_class1/total*math.log(count_unique_class1/total, 2))
+    uniqueVAlues, sumUnquie = np.unique(X_train[name], return_counts=True)
 
-    return entropy
+    # print(data, "-------------------------")
+    # print(name)
+    # print(uniqueVAlues)
+    # for i in uniqueVAlues:
+    #    entropy = 0
+    #    for v in uV:
+    #        print(data[i][v])
 
-print(entropy(targetArray))
+    # print(uniqueVAlues, sumUnquie)
+
+# data = X_train.groupby("sex")['target'].value_counts()/X_train.groupby("sex")['target'].count()
+# print(data, data[0][1])
+
