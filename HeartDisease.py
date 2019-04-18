@@ -27,3 +27,4 @@ def entropy(target_col):
     entropy = -(count_unique_class0/total*math.log(count_unique_class0/total, 2) + count_unique_class1/total*math.log(count_unique_class1/total, 2))
 
     return entropy
+
