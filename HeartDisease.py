@@ -31,3 +31,9 @@ for name in dataNames:
 #print(len(X_train))
 # data = X_train.groupby("sex")['target'].value_counts()/X_train.groupby("sex")['target'].count()
 # print(data, data[0][1])
+
+#My analogy was that for each attrib under sex e.g 0.&1 You calculate the entropies for both, then store the unique value and the attrib
+#e.g [[sex,1/3,2/3],[cp,0.75,0.5]...]We will then calculate the Gain(D,sex) for sex knowing those two entropies
+#multiplied by the number of times their attributes 0/1 appears
+# a third suggestion would be to store the number of occurences in the same array e.g [[sex,1/3,4,2/3,5]...]
+#1/3 appears 4 times and 2/3 appears 5 times
