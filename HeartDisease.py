@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import math
-
+import tree
 # Stores the data as a dataframe
 df = pd.read_csv("heart.csv")
 # Split the data into test and training data
@@ -84,4 +84,6 @@ for name in dataNames:
     gainDictionary[name] = gain
     gain = 0
 print(gainDictionary)
+MaxDictVal = max(gainDictionary, key=gainDictionary.get)
+
 
